@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
-import Login from './components/account/components/Login';
+import LoginForm from './components/account/components/LoginForm';
 
 function App(): ReactElement {
   return (
-    <Login />    
+    <LoginForm />    
   );
 }
 

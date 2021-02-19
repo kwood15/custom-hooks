@@ -1,15 +1,38 @@
-import { ChangeEvent, MouseEvent, useState, useDebugValue } from 'react';
+import {
+  ChangeEvent,
+  MouseEvent,
+  FormEvent,
+  useState,
+  useDebugValue,
+  useEffect,
+} from 'react';
 
 export function useForm<K>(
-  initialValues: K
+  initialValues: K,
+  validate: (values: K) => {},
+  callback: () => void
 ): [
-  K,
-  (event: ChangeEvent<HTMLInputElement>) => void,
-  (event: MouseEvent<HTMLButtonElement>) => void
+  values: K,
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void,
+  handleSubmit: (
+    event: MouseEvent<HTMLButtonElement | FormEvent<HTMLFormElement>>
+  ) => void,
+  errors: K
 ] {
   const [values, setValues] = useState<K>(initialValues);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [errors, setErrors] = useState<any>({
+    emailAddress: '',
+    password: ''
+  });
 
   useDebugValue('useForm');
+
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      callback();
+    }
+  }, [errors, callback, isSubmitting]);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     const { target } = event;
@@ -22,9 +45,14 @@ export function useForm<K>(
     });
   }
 
-  function handleSubmit() {
+  function handleSubmit(
+    event: MouseEvent<HTMLButtonElement | FormEvent<HTMLFormElement>>
+  ) {
+    event.preventDefault();
     console.log(JSON.stringify(values));
+    setIsSubmitting(true);
+    setErrors(validate(values));
   }
 
-  return [values, handleChange, handleSubmit];
+  return [values, handleChange, handleSubmit, errors];
 }
