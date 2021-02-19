@@ -12,10 +12,13 @@ export function useForm<K>(
   useDebugValue('useForm');
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    const { name, value } = event.target;
+    const { target } = event;
+
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+
     setValues({
       ...values,
-      [name]: value,
+      [target.name]: value,
     });
   }
 
