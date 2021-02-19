@@ -1,12 +1,27 @@
-import { useState } from 'react';
+import { ChangeEvent, MouseEvent, useState, useDebugValue } from 'react';
 
-export function useForm(initialValues: any) {
-  const [values, setValues] = useState(initialValues);
-  return [
-    values,
-    (e: React.ChangeEvent<HTMLInputElement>) =>
-      setValues({
-        [e.target.name]: e.target.value,
-      }),
-  ];
+export function useForm<K>(
+  initialValues: K
+): [
+  K,
+  (event: ChangeEvent<HTMLInputElement>) => void,
+  (event: MouseEvent<HTMLButtonElement>) => void
+] {
+  const [values, setValues] = useState<K>(initialValues);
+
+  useDebugValue('useForm');
+
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+    const { name, value } = event.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  }
+
+  function handleSubmit() {
+    console.log(JSON.stringify(values));
+  }
+
+  return [values, handleChange, handleSubmit];
 }

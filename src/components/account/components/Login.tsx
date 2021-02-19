@@ -1,12 +1,18 @@
-import { ReactElement } from "react";
-import { useForm } from "../../../custom-hooks/useForm";
+import { ReactElement } from 'react';
+import { useForm } from '../../../custom-hooks/useForm';
 
+interface LoginForm {
+  email: string;
+  password: string;
+}
 
 export default function Login(): ReactElement {
-  const [values, handleChange] = useForm({
-    email: "",
-    password: "",
+  const [values, handleChange, handleSubmit] = useForm<LoginForm>({
+    email: '',
+    password: '',
   });
+
+  const { email, password } = values;
 
   return (
     <form>
@@ -17,7 +23,7 @@ export default function Login(): ReactElement {
         type="email"
         placeholder="Email"
         onChange={handleChange}
-        value={values.email}
+        value={email}
       />
       <hr />
       <label htmlFor="password">Password</label>
@@ -27,10 +33,12 @@ export default function Login(): ReactElement {
         type="password"
         placeholder="Password"
         onChange={handleChange}
-        value={values.password}
+        value={password}
       />
       <hr />
-      <button type="submit">Login</button>
+      <button type="submit" onClick={handleSubmit}>
+        Login
+      </button>
     </form>
   );
 }
