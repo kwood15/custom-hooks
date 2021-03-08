@@ -1,6 +1,7 @@
 import { ChangeEvent, MouseEvent, FormEvent, ReactElement } from 'react';
 import { validate } from '../../../helpers/validation/loginForm';
 import { useForm } from '../../../custom-hooks/useForm';
+import { FormFields } from '../../../types/formFields';
 
 export interface LoginFormState {
   emailAddress: string;
@@ -9,10 +10,7 @@ export interface LoginFormState {
   handleSubmit: (
     event: MouseEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>
   ) => void;
-  errors: {
-    emailAddress: string;
-    password: string;
-  };
+  errors: FormFields;
 }
 
 export default function LoginForm(): ReactElement {

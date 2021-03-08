@@ -4,8 +4,10 @@ import {
   FormEvent,
   useState,
   useDebugValue,
-  useEffect,
+  useEffect
 } from 'react';
+
+import { FormFields } from '../types/formFields';
 
 export function useForm<K>(
   initialValues: K,
@@ -17,11 +19,11 @@ export function useForm<K>(
   handleSubmit: (
     event: MouseEvent<HTMLButtonElement | FormEvent<HTMLFormElement>>
   ) => void,
-  errors: K
+  errors: Pick<FormFields, 'emailAddress' | 'password'> | Partial<K>
 ] {
   const [values, setValues] = useState<K>(initialValues);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [errors, setErrors] = useState<any>({
+  const [errors, setErrors] = useState<Pick<FormFields, 'emailAddress' | 'password'> | Partial<K>>({
     emailAddress: '',
     password: ''
   });

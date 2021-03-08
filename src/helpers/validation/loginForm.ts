@@ -1,6 +1,6 @@
 import { LoginFormState } from '../../components/account/components/LoginForm';
 
-export function validate(values: Partial<LoginFormState>) {
+export function validate(values: LoginFormState) {
   let errors = {
     emailAddress: '',
     password: ''
