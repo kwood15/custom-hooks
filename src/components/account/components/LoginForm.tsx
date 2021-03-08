@@ -6,11 +6,12 @@ import { useForm } from '../../../custom-hooks/useForm';
 export interface LoginFormState {
   emailAddress: string;
   password: string;
+  staySignedIn: boolean;
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (
     event: MouseEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>
   ) => void;
-  errors: FormFields;
+  errors: Partial<FormFields>;
 }
 
 export default function LoginForm(): ReactElement {
@@ -18,9 +19,10 @@ export default function LoginForm(): ReactElement {
   const [values, handleChange, handleSubmit, errors] = useForm<LoginFormState>({
     emailAddress: '',
     password: '',
+    staySignedIn: false
   }, validate); 
 
-  const { emailAddress, password } = values;
+  const { emailAddress, password, staySignedIn } = values;
 
   return (
     <form noValidate={true}>
@@ -39,7 +41,6 @@ export default function LoginForm(): ReactElement {
           {errors['emailAddress']}
         </p>
       </div>
-      <hr />
       <div>
         <label htmlFor="password">Password</label>
         <input
@@ -55,7 +56,18 @@ export default function LoginForm(): ReactElement {
           {errors['password']}
         </p>
       </div>
-      <hr />
+      <div>
+        <label htmlFor="staySignedIn">
+          Stay signed in:
+          <input
+            id="staySignedIn"
+            name="staySignedIn"
+            type="checkbox"
+            checked={staySignedIn}
+            onChange={handleChange} 
+          />
+        </label>
+      </div>
       <button type="submit" onClick={handleSubmit}>
         Login
       </button>

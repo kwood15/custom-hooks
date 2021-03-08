@@ -36,13 +36,13 @@ export function useForm<K>(
   }, [errors, callback, isSubmitting]);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    const { target } = event;
+    const { name, type, checked, value } = event.target;
 
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const fieldValue = type === 'checkbox' || type === 'radio' ? checked : value;
 
     setValues((prevState) => ({
       ...prevState,
-      [target.name]: value,
+      [name]: fieldValue
     }));
   }
 
