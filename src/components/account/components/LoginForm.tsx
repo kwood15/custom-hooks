@@ -1,7 +1,7 @@
 import { ChangeEvent, MouseEvent, FormEvent, ReactElement } from 'react';
+import { FormFields } from '../../../types/formFields';
 import { validate } from '../../../helpers/validation/loginForm';
 import { useForm } from '../../../custom-hooks/useForm';
-import { FormFields } from '../../../types/formFields';
 
 export interface LoginFormState {
   emailAddress: string;

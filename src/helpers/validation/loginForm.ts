@@ -8,12 +8,10 @@ export function validate(values: LoginFormState) {
 
   if (!values.emailAddress) {
     errors.emailAddress = 'Email Address is required';
-  }
-
-  else if (!/\S+@\S+\.\S+/.test(values.emailAddress)) {
+  } else if (!/\S+@\S+\.\S+/.test(values.emailAddress)) {
     errors.emailAddress = 'Email Address is invalid';
   }
-
+  
   if (!values.password) {
     errors.password = 'Password is required';
   }

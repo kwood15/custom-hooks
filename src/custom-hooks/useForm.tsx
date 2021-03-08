@@ -6,7 +6,6 @@ import {
   useDebugValue,
   useEffect
 } from 'react';
-
 import { FormFields } from '../types/formFields';
 
 export function useForm<K>(
@@ -19,11 +18,11 @@ export function useForm<K>(
   handleSubmit: (
     event: MouseEvent<HTMLButtonElement | FormEvent<HTMLFormElement>>
   ) => void,
-  errors: Pick<FormFields, 'emailAddress' | 'password'> | Partial<K>
+  errors: Partial<FormFields> | Partial<K>
 ] {
   const [values, setValues] = useState<K>(initialValues);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [errors, setErrors] = useState<Pick<FormFields, 'emailAddress' | 'password'> | Partial<K>>({
+  const [errors, setErrors] = useState<Partial<FormFields> | Partial<K>>({
     emailAddress: '',
     password: ''
   });
@@ -41,10 +40,10 @@ export function useForm<K>(
 
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
-    setValues({
-      ...values,
+    setValues((prevState) => ({
+      ...prevState,
       [target.name]: value,
-    });
+    }));
   }
 
   function handleSubmit(
