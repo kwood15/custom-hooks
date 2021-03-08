@@ -1,4 +1,4 @@
-import { LoginFormState } from '../components/account/components/LoginForm';
+import { LoginFormState } from '../../components/account/components/LoginForm';
 
 export function validate(values: Partial<LoginFormState>) {
   let errors = {
@@ -9,8 +9,13 @@ export function validate(values: Partial<LoginFormState>) {
   if (!values.emailAddress) {
     errors.emailAddress = 'Email Address is required';
   }
+
   else if (!/\S+@\S+\.\S+/.test(values.emailAddress)) {
-    errors.emailAddress = 'Email address is invalid';
+    errors.emailAddress = 'Email Address is invalid';
+  }
+
+  if (!values.password) {
+    errors.password = 'Password is required';
   }
 
   return errors;
