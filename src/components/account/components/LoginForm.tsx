@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ChangeEvent, MouseEvent, FormEvent, ReactElement } from 'react';
 import { FormFields } from '../../../types/formFields';
 import { validate } from '../../../helpers/validation/loginForm';
@@ -15,7 +16,6 @@ export interface LoginFormState {
 }
 
 export default function LoginForm(): ReactElement {
-  // @ts-ignore
   const [values, handleChange, handleSubmit, errors] = useForm<LoginFormState>({
     emailAddress: '',
     password: '',
@@ -37,9 +37,7 @@ export default function LoginForm(): ReactElement {
           onChange={handleChange}
           value={emailAddress}
         />
-         <p className="has-error">
-          {errors['emailAddress']}
-        </p>
+        <p className="has-error">{errors['emailAddress']}</p>
       </div>
       <div>
         <label htmlFor="password">Password</label>
@@ -52,9 +50,7 @@ export default function LoginForm(): ReactElement {
           onChange={handleChange}
           value={password}
         />
-        <p className="has-error">
-          {errors['password']}
-        </p>
+        <p className="has-error">{errors['password']}</p>
       </div>
       <div>
         <label htmlFor="staySignedIn">
@@ -64,11 +60,14 @@ export default function LoginForm(): ReactElement {
             name="staySignedIn"
             type="checkbox"
             checked={staySignedIn}
-            onChange={handleChange} 
+            onChange={handleChange}
           />
         </label>
       </div>
-      <button type="submit" onClick={handleSubmit}>
+      <button
+        type="submit"
+        onClick={handleSubmit}
+      >
         Login
       </button>
     </form>
