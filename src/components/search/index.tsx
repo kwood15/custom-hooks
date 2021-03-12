@@ -1,13 +1,16 @@
 import { ReactElement, useEffect } from 'react';
-import { useForm } from '../custom-hooks/useForm';
-import { useFetch } from '../custom-hooks/useFetch';
+import { useForm } from '../../custom-hooks/useForm';
+import { useFetch } from '../../custom-hooks/useFetch';
+// import { useDebounce } from '../../custom-hooks/useDebounce';
+import { Results } from '../search/components/Results';
 
-interface Item {
+export interface Item {
   idDrink: number;
-  strDrink: number;
+  strDrink: string;
+  strInstructions: string;
 }
 
-interface ItemList {
+export interface ItemList {
   drinks: Item[] | null;
 }
 
@@ -46,9 +49,7 @@ export default function Search(): ReactElement {
       {isLoading ? (
         <p>Loading cocktails...</p>
       ) : (
-        data?.drinks?.map((item: Item) => (
-          <p key={item.idDrink}>{item.strDrink}</p>
-        ))
+       <Results data={data} />
       )}
       {isError && <p>An error occured, please try again</p>}
     </>
