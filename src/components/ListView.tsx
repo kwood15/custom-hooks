@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
 import { useFetch } from '../custom-hooks/useFetch';
 
 interface Item {
@@ -11,9 +11,11 @@ interface Item {
 type Data = Item[] | null;
 
 export default function ListView(): ReactElement {
-  const { data, isLoading, isError } = useFetch<Data>(
-    'https://jsonplaceholder.typicode.com/posts', []
-  );
+  const { fetchData, isLoading, data, isError } = useFetch<Data>('https://jsonplaceholder.typicode.com/posts', []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   return (
     <>

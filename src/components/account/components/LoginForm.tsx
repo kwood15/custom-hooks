@@ -1,28 +1,43 @@
-// @ts-nocheck
-import { ChangeEvent, MouseEvent, FormEvent, ReactElement } from 'react';
-import { FormFields } from '../../../types/formFields';
+import { MouseEvent, FormEvent, ReactElement, useState  } from 'react';
 import { validate } from '../../../helpers/validation/loginForm';
 import { useForm } from '../../../custom-hooks/useForm';
+import { useFetch } from '../../../custom-hooks/useFetch';
 
 export interface LoginFormState {
   emailAddress: string;
   password: string;
   staySignedIn: boolean;
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: (
-    event: MouseEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>
-  ) => void;
-  errors: Partial<FormFields>;
 }
 
 export default function LoginForm(): ReactElement {
-  const [values, handleChange, handleSubmit, errors] = useForm<LoginFormState>({
+  const [values, handleChange] = useForm<LoginFormState>({
     emailAddress: '',
     password: '',
     staySignedIn: false
-  }, validate); 
+  }); 
+
+  const [, setIsSubmitting] = useState<boolean>(false);
+  
+  const [errors, setErrors] = useState<Partial<LoginFormState>>({
+    emailAddress: '',
+    password: ''
+  });
+
+  const { fetchData } = useFetch<LoginFormState>('/login-endpoint');
 
   const { emailAddress, password, staySignedIn } = values;
+
+  function handleSubmit(
+    event: MouseEvent<HTMLButtonElement | FormEvent<HTMLFormElement>>
+  ) {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setErrors(validate(values));
+    fetchData({ 
+      method: 'POST',
+      body: JSON.stringify(values)
+    }); 
+  }
 
   return (
     <form noValidate={true}>
