@@ -1,5 +1,3 @@
 import { LoginForm } from './components/LoginForm';
 
-export {
-  LoginForm
-}
+export { LoginForm };

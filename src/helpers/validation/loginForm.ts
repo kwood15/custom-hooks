@@ -1,4 +1,4 @@
-import { LoginFormState } from '../../components/account/components/LoginForm';
+import { LoginFormState } from '../../components/account/login/components/LoginForm';
 
 export function validate(values: LoginFormState) {
   let errors = {
