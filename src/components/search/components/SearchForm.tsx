@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+import { endpoints } from '../../../helpers/api/endpoints';
 import { useForm } from '../../../custom-hooks/useForm';
 import { useFetch } from '../../../custom-hooks/useFetch';
 import { useDebounce } from '../../../custom-hooks/useDebounce';
@@ -28,7 +29,7 @@ export function SearchForm(): ReactElement {
   const debouncedSearchTerm = useDebounce(search, 250); // can be adjusted for the delay
 
   const { fetchData, isLoading, data, isError } = useFetch<ItemList>(
-    `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${debouncedSearchTerm}`,
+    `${endpoints.cocktails}?s=${debouncedSearchTerm}`,
     { drinks: [] }
   );
 
