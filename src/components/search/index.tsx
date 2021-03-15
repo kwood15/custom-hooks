@@ -1,4 +1,4 @@
-import { ReactElement, useEffect } from 'react';
+import { ReactElement } from 'react';
 import { useForm } from '../../custom-hooks/useForm';
 import { useFetch } from '../../custom-hooks/useFetch';
 import { useDebounce } from '../../custom-hooks/useDebounce';
@@ -32,10 +32,6 @@ export default function Search(): ReactElement {
     { drinks: [] }
   );
 
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
   return (
     <>
       <label htmlFor="search">Search</label>
@@ -44,14 +40,13 @@ export default function Search(): ReactElement {
         name="search"
         type="search"
         placeholder="Search for a cocktail..."
-        onChange={handleChange}
+        onChange={(e) => {
+          handleChange(e);
+          fetchData();
+        }}
       />
 
-      {isLoading ? (
-        <p>Loading cocktails...</p>
-      ) : (
-       <Results data={data} />
-      )}
+      {isLoading ? <p>Loading cocktails...</p> : <Results data={data} />}
       {isError && <p>An error occured, please try again</p>}
     </>
   );
