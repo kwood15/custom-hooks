@@ -14,9 +14,6 @@ function App(): ReactElement {
 
       {/* Testing useFetch hook */}
       <ListView />
-
-      {/* Testing useFetch hook */}
-      <ListView />
     </>
   );
 }
