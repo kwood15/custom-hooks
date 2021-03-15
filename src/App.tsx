@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import Search from './components/search';
+import { SearchForm } from './components/search';
+import { LoginForm } from './components/account';
 import ListView from './components/ListView';
-import LoginForm from './components/account/components/LoginForm';
 
 function App(): ReactElement {
   return (
@@ -9,7 +9,7 @@ function App(): ReactElement {
       {/* Testing useForm/useFetch hook */}
       <LoginForm />
       <hr />
-      <Search />
+      <SearchForm />
       <hr />
 
       {/* Testing useFetch hook */}

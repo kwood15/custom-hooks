@@ -9,7 +9,7 @@ export interface LoginFormState {
   staySignedIn: boolean;
 }
 
-export default function LoginForm(): ReactElement {
+export function LoginForm(): ReactElement {
   const [values, handleChange] = useForm<LoginFormState>({
     emailAddress: '',
     password: '',
