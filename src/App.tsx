@@ -14,7 +14,7 @@ function App(): ReactElement {
       <hr />
 
       {/* Testing useFetch hook */}
-      <ListView />
+      {/* <ListView /> */}
 
       {/* Testing useFetch/useLocalStorage hook */}
       <FavouritesList />
