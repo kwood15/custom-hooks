@@ -1,10 +1,10 @@
-import { ReactElement } from 'react';
+import { MouseEvent, ReactElement } from 'react';
 import { Item } from '..';
 import { FavouritesItem } from '../components/FavouritesItem';
 
 interface FavouritesListProps {
   items: Item[] | undefined;
-  handleClick: (item: Item) => void;
+  handleClick: (item: Item) => void; // e: MouseEvent<HTMLButtonElement>
   isFavourite: boolean;
 }
 
@@ -19,23 +19,6 @@ export function FavouritesList({ items, handleClick, isFavourite }: FavouritesLi
           isFavourite={isFavourite}
         />
       ))}
-
-      <hr />
-
-      {/* Testing favs from storage */}
-      {/* <button onClick={() => setShowFavourites(!showFavourites)}>
-        {showFavourites ? 'Hide Favourites' : 'Show Favourites'}
-      </button>
-
-      {showFavourites &&
-        items.map((favourite: Item) => (
-          <FavouritesItem
-            key={favourite.idDrink}
-            item={favourite}
-            handleClick={handleClick}
-            isFavourite={isFavourite}
-          />
-        ))} */}
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { MouseEvent, ReactElement } from 'react';
 import { useState, useEffect } from 'react';
 import { endpoints } from '../../../helpers/api/endpoints';
 import { useFetch } from '../../../custom-hooks/useFetch';
@@ -24,31 +24,30 @@ export default function Favourites(): ReactElement {
   const [values, setValues] = useLocalStorage<any>('favourites', []); // get favourites from local storage
   console.log('from storage', values);
 
-  const [showFavourites, setShowFavourites] = useState<boolean>(false);
+  const [showFavourites] = useState<boolean>(true);
   const [isFavourite, setIsFavourite] = useState<boolean>(false);
 
   useEffect(() => {
     fetchData();
-    console.log('isFavourite state', isFavourite);
   }, [fetchData]);
 
   function handleClick(drink: Item) {
     if (!isFavourite) {
+      setIsFavourite(true);
       handleAdd(drink);
     } else {
+      setIsFavourite(false);
       handleRemove(drink);
     }
   }
 
   function handleAdd(drink: Item) {
-    setIsFavourite(true);
     if (!values.some((item: Item) => item.idDrink === drink.idDrink)) {
       setValues([...values, drink]);
     }
   }
 
   function handleRemove(drink: Item) {
-    setIsFavourite(false);
     setValues([
       ...values.filter((item: Item) => item.idDrink !== drink.idDrink)
     ]);
@@ -59,29 +58,24 @@ export default function Favourites(): ReactElement {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <FavouritesList
-          items={data?.drinks}
-          handleClick={handleClick}
-          isFavourite={isFavourite}
-        />
+        <>
+          <FavouritesList
+            items={data?.drinks}
+            handleClick={handleClick}
+            isFavourite={isFavourite}
+          />
+          <hr />
+          {showFavourites && (
+            <FavouritesList
+              items={values}
+              handleClick={handleClick}
+              isFavourite={isFavourite}
+            />
+          )}
+        </>
       )}
 
       {isError && <p>An error occured, please try again</p>}
-
-      <hr />
-
-      {/* Testing favs from storage
-      <button onClick={() => setShowFavourites(!showFavourites)}>
-        {showFavourites ? 'Hide Favourites' : 'Show Favourites'}
-      </button>
-
-      {showFavourites &&
-        <FavouritesList
-          items={values}
-          handleClick={handleClick}
-          isFavourite={isFavourite}
-        />
-      } */}
     </>
   )
 }

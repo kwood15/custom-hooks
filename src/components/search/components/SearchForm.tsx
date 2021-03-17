@@ -3,7 +3,7 @@ import { endpoints } from '../../../helpers/api/endpoints';
 import { useForm } from '../../../custom-hooks/useForm';
 import { useFetch } from '../../../custom-hooks/useFetch';
 import { useDebounce } from '../../../custom-hooks/useDebounce';
-import { SearchResults } from './SearchResults';
+import { SearchFormResults } from './SearchFormResults';
 
 export interface Item {
   idDrink: number;
@@ -49,7 +49,7 @@ export function SearchForm(): ReactElement {
         />
       </form>
       <>
-        {isLoading ? <p>Loading cocktails...</p> : <SearchResults data={data} />}
+        {isLoading ? <p>Loading cocktails...</p> : <SearchFormResults data={data} />}
         {isError && <p>An error occured, please try again</p>}
       </>
     </>
