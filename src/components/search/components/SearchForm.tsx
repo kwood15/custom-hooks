@@ -12,7 +12,7 @@ export interface Item {
 }
 
 export interface ItemList {
-  drinks: Item[] | null;
+  drinks: Item[] | undefined;
 }
 
 interface SearchFormState {

@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { ItemList, Item } from './SearchForm';
 
 interface SearchResultsProps {
-  data: ItemList | null;
+  data: ItemList | undefined;
 }
 
 export function SearchResults({ data }: SearchResultsProps): ReactElement {

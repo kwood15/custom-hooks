@@ -1,7 +1,7 @@
 import { useState, useCallback, useDebugValue } from 'react';
 
 export function useFetch<K>(url: RequestInfo, initialData?: K) {
-  const [data, setData] = useState<K | null>(initialData || null);
+  const [data, setData] = useState<K | undefined>(initialData);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
 
