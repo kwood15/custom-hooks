@@ -1,14 +1,13 @@
-import { MouseEvent, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { Item } from '..';
 import { FavouritesItem } from '../components/FavouritesItem';
 
 interface FavouritesListProps {
   items: Item[] | undefined;
-  handleClick: (item: Item) => void; // e: MouseEvent<HTMLButtonElement>
-  isFavourite: boolean;
+  handleClick: (item: Item, isFavourite: boolean) => void; // e: MouseEvent<HTMLButtonElement>
 }
 
-export function FavouritesList({ items, handleClick, isFavourite }: FavouritesListProps): ReactElement {
+export function FavouritesList({ items, handleClick }: FavouritesListProps): ReactElement {
   return (
     <>
       {items?.map((drink: Item) => (
@@ -16,7 +15,6 @@ export function FavouritesList({ items, handleClick, isFavourite }: FavouritesLi
           key={drink.idDrink}
           item={drink}
           handleClick={handleClick}
-          isFavourite={isFavourite}
         />
       ))}
     </>

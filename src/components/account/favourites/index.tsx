@@ -1,4 +1,4 @@
-import { MouseEvent, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { useState, useEffect } from 'react';
 import { endpoints } from '../../../helpers/api/endpoints';
 import { useFetch } from '../../../custom-hooks/useFetch';
@@ -25,19 +25,16 @@ export default function Favourites(): ReactElement {
   console.log('from storage', values);
 
   const [showFavourites] = useState<boolean>(true);
-  const [isFavourite, setIsFavourite] = useState<boolean>(false);
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
-  function handleClick(drink: Item) {
-    if (!isFavourite) {
-      setIsFavourite(true);
-      handleAdd(drink);
-    } else {
-      setIsFavourite(false);
+  function handleClick(drink: Item, isFavourite: boolean) {
+    if (isFavourite) {
       handleRemove(drink);
+    } else {
+      handleAdd(drink);
     }
   }
 
@@ -62,19 +59,16 @@ export default function Favourites(): ReactElement {
           <FavouritesList
             items={data?.drinks}
             handleClick={handleClick}
-            isFavourite={isFavourite}
           />
           <hr />
           {showFavourites && (
             <FavouritesList
               items={values}
               handleClick={handleClick}
-              isFavourite={isFavourite}
             />
           )}
         </>
       )}
-
       {isError && <p>An error occured, please try again</p>}
     </>
   )
