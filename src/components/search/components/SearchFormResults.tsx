@@ -1,11 +1,11 @@
 import { ReactElement } from 'react';
-import { ItemList, Item } from './SearchForm';
+import { ItemList, Item } from '..';
 
-interface SearchResultsProps {
+interface SearchFormResultsProps {
   data: ItemList | undefined;
 }
 
-export function SearchFormResults({ data }: SearchResultsProps): ReactElement {
+export function SearchFormResults({ data }: SearchFormResultsProps): ReactElement {
   return (
     <>
       {data?.drinks?.map(({ idDrink, strDrink, strInstructions }: Item) => (

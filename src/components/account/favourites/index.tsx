@@ -50,15 +50,9 @@ export default function Favourites(): ReactElement {
   return (
     <>
       {isLoading ? (
-        <p>Loading...</p>
+        <p>Loading favourites...</p>
       ) : (
         <>
-          <FavouritesList
-            items={data?.drinks}
-            handleClick={handleClick}
-            values={values}
-          />
-          <hr />
           <FavouritesList
             items={values}
             handleClick={handleClick}

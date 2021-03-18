@@ -4,20 +4,13 @@ import { useForm } from '../../../custom-hooks/useForm';
 import { useFetch } from '../../../custom-hooks/useFetch';
 import { useDebounce } from '../../../custom-hooks/useDebounce';
 import { SearchFormResults } from './SearchFormResults';
-
-export interface Item {
-  idDrink: number;
-  strDrink: string;
-  strInstructions: string;
-}
-
-export interface ItemList {
-  drinks: Item[];
-}
+import { ItemList } from '..';
+import { SearchResults } from './SearchResults';
 
 interface SearchFormState {
   search: string;
 }
+
 
 export function SearchForm(): ReactElement {
   const [values, handleChange] = useForm<SearchFormState>({
@@ -48,10 +41,9 @@ export function SearchForm(): ReactElement {
           }}
         />
       </form>
-      <>
-        {isLoading ? <p>Loading cocktails...</p> : <SearchFormResults data={data} />}
-        {isError && <p>An error occured, please try again</p>}
-      </>
+      {isLoading ? <p>Loading cocktail suggestions...</p> : <SearchFormResults data={data} />}
+      <SearchResults />
+      {isError && <p>An error occured, please try again</p>}
     </>
   );
 }
