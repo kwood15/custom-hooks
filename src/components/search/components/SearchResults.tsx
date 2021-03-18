@@ -5,11 +5,7 @@ import { useLocalStorage } from '../../../custom-hooks/useLocalStorage';
 import { ItemList, Item } from '..';
 import { SearchList } from '../components/SearchList';
 
-interface SearchResultsProps {
-  searchTerm: string;
-}
-
-export function SearchResults({ searchTerm }: SearchResultsProps): ReactElement {
+export function SearchResults(): ReactElement {
   const { fetchData, isLoading, data, isError } = useFetch<Partial<ItemList>>(
     `${endpoints.cocktails}?s=`,
     { drinks: [] }
@@ -43,7 +39,7 @@ export function SearchResults({ searchTerm }: SearchResultsProps): ReactElement 
   return (
     <>
       {isLoading ? (
-        <p>{`Loading results ${searchTerm ? `for ${searchTerm}...` : ''}`}</p>
+        <p>Loading results...</p>
       ) : (
         <>
           <SearchList

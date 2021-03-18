@@ -5,7 +5,6 @@ import { useFetch } from '../../../custom-hooks/useFetch';
 import { useDebounce } from '../../../custom-hooks/useDebounce';
 import { SearchFormResults } from './SearchFormResults';
 import { ItemList } from '..';
-import { SearchResults } from './SearchResults';
 
 interface SearchFormState {
   search: string;
@@ -41,8 +40,14 @@ export function SearchForm(): ReactElement {
           }}
         />
       </form>
-      {isLoading ? <p>Loading cocktail suggestions...</p> : <SearchFormResults data={data} />}
-      <SearchResults />
+      {isLoading ? (
+        <p>Loading cocktails...</p>
+      ) : (
+        <>
+          <h3>{`${!!search ? `Loading results for ${search}...` : ''}`}</h3>
+          <SearchFormResults data={data} />
+        </>
+      )}
       {isError && <p>An error occured, please try again</p>}
     </>
   );

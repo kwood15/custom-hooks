@@ -4,6 +4,7 @@ import Search from './components/search';
 import { LoginForm } from './components/account/login';
 import Favourites from './components/account/favourites';
 import ListView from './components/ListView';
+import { SearchResults } from './components/search/components/SearchResults';
 
 function App(): ReactElement {
   return (
@@ -13,6 +14,9 @@ function App(): ReactElement {
           <ul>
             <li>
               <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/search-results">Search Results</Link>
             </li>
             <li>
               <Link to="/login">Login</Link>
@@ -28,6 +32,9 @@ function App(): ReactElement {
         <Switch>
           <Route path="/" exact>
             <Search />
+          </Route>
+          <Route path="/search-results">
+            <SearchResults />
           </Route>
           <Route path="/login">
             <LoginForm />
