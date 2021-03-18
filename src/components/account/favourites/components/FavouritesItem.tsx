@@ -4,13 +4,15 @@ import { Item } from '..';
 interface FavouriteItemProps {
   item: Item;
   handleClick: (item: Item, isFavourite: boolean) => void;
+  isFilteredFavourite: boolean;
 }
 
 export function FavouritesItem({
   item,
   handleClick,
+  isFilteredFavourite
 }: FavouriteItemProps): ReactElement {
-  const [isFavourite, setIsFavourite] = useState<boolean>(false);
+  const [isFavourite, setIsFavourite] = useState<boolean>(isFilteredFavourite);
 
   return (
     <div key={item.idDrink}>

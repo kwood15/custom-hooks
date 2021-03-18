@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { endpoints } from '../../../helpers/api/endpoints';
 import { useFetch } from '../../../custom-hooks/useFetch';
 import { useLocalStorage } from '../../../custom-hooks/useLocalStorage';
@@ -13,18 +13,17 @@ export interface Item {
 
 interface ItemList {
   drinks: Item[] | undefined;
+  values: Item[];
 }
 
 export default function Favourites(): ReactElement {
-  const { fetchData, isLoading, data, isError } = useFetch<ItemList>(
+  const { fetchData, isLoading, data, isError } = useFetch<Partial<ItemList>>(
     `${endpoints.cocktails}?s=`,
     { drinks: [] }
   );
 
   const [values, setValues] = useLocalStorage<any>('favourites', []); // get favourites from local storage
-  console.log('from storage', values);
-
-  const [showFavourites] = useState<boolean>(true);
+  // console.log('from storage', values);
 
   useEffect(() => {
     fetchData();
@@ -39,14 +38,12 @@ export default function Favourites(): ReactElement {
   }
 
   function handleAdd(drink: Item) {
-    if (!values.some((item: Item) => item.idDrink === drink.idDrink)) {
-      setValues([...values, drink]);
-    }
+    setValues([...values, drink]);
   }
 
   function handleRemove(drink: Item) {
     setValues([
-      ...values.filter((item: Item) => item.idDrink !== drink.idDrink)
+      ...values.filter((item: Item) => item.idDrink !== drink.idDrink),
     ]);
   }
 
@@ -59,18 +56,17 @@ export default function Favourites(): ReactElement {
           <FavouritesList
             items={data?.drinks}
             handleClick={handleClick}
+            values={values}
           />
           <hr />
-          {showFavourites && (
-            <FavouritesList
-              items={values}
-              handleClick={handleClick}
-            />
-          )}
+          <FavouritesList
+            items={values}
+            handleClick={handleClick}
+            values={values}
+          />
         </>
       )}
       {isError && <p>An error occured, please try again</p>}
     </>
-  )
+  );
 }
-
