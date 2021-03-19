@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
+    "server1": "ts-node ./src/server.ts",
     "server": "tsc ./src/server.ts && node ./src/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",

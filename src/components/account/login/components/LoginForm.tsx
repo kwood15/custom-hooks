@@ -7,23 +7,27 @@ export interface LoginFormState {
   emailAddress: string;
   password: string;
   staySignedIn: boolean;
+  success?: Response;
+}
+interface Response {
+  success: boolean;
 }
 
 export function LoginForm(): ReactElement {
   const [values, handleChange] = useForm<LoginFormState>({
     emailAddress: '',
     password: '',
-    staySignedIn: false
+    staySignedIn: false,
   }); 
 
-  const [, setIsSubmitting] = useState<boolean>(false);
+  const [, setIsSubmitting] = useState<boolean>(false); // isSubmitting
   
   const [errors, setErrors] = useState<Partial<LoginFormState>>({
     emailAddress: '',
     password: ''
   });
 
-  const { fetchData } = useFetch<LoginFormState>('/login-endpoint');
+  const { fetchData, data } = useFetch<LoginFormState>('/login');
 
   const { emailAddress, password, staySignedIn } = values;
 
@@ -37,6 +41,14 @@ export function LoginForm(): ReactElement {
       method: 'POST',
       body: JSON.stringify(values)
     }); 
+  }
+
+  if (data?.success) {
+    return (
+      <p>
+        Successfully logged in
+      </p>
+    )
   }
 
   return (

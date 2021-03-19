@@ -17,7 +17,7 @@ interface ItemList {
 }
 
 export default function Favourites(): ReactElement {
-  const { fetchData, isLoading, data, isError } = useFetch<Partial<ItemList>>(
+  const { fetchData, isLoading, isError } = useFetch<Partial<ItemList>>(
     `${endpoints.cocktails}?s=`,
     { drinks: [] }
   );
