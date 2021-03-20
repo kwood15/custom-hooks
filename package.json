@@ -38,6 +38,7 @@
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/react": "^6.1.21",
     "@types/react-router-dom": "^5.1.7",
+    "prettier": "2.2.1",
     "ts-node": "^9.1.1"
   },
   "eslintConfig": {
