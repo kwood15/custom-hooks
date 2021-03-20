@@ -13,7 +13,7 @@ npm run server
 ```
 
 Run unit tests:
-```bash
+```
 npm test
 ```
 
