@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
+    "pre-commit": "npx lint-staged",
     "server1": "ts-node ./src/server.ts",
     "server": "tsc ./src/server.ts && node ./src/server.js",
     "build": "react-scripts build",
@@ -12,6 +13,10 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "prepare": "husky install"
+
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,css}": "prettier --write"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -40,6 +45,7 @@
     "@storybook/react": "^6.1.21",
     "@types/react-router-dom": "^5.1.7",
     "husky": "^5.2.0",
+    "lint-staged": "^10.5.4",
     "prettier": "2.2.1",
     "ts-node": "^9.1.1"
   },
@@ -60,12 +66,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:4000",
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,css}": "prettier --write"
   }
 }
