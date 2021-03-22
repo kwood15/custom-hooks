@@ -1,4 +1,4 @@
-import { MouseEvent, FormEvent, ReactElement, useState  } from 'react';
+import { MouseEvent, FormEvent, ReactElement, useState } from 'react';
 import { validate } from '../../../../helpers/validation/loginForm';
 import { useForm } from '../../../../custom-hooks/useForm';
 import { useFetch } from '../../../../custom-hooks/useFetch';
@@ -18,15 +18,15 @@ export function LoginForm(): ReactElement {
     emailAddress: '',
     password: '',
     staySignedIn: false,
-  }); 
+  });
 
-  const [, setIsSubmitting] = useState<boolean>(false); // isSubmitting
-  
   const [errors, setErrors] = useState<Partial<LoginFormState>>({
     emailAddress: '',
     password: ''
   });
 
+  const [, setIsSubmitting] = useState<boolean>(false); // isSubmitting
+  
   const { fetchData, data } = useFetch<LoginFormState>('/login');
 
   const { emailAddress, password, staySignedIn } = values;
@@ -37,18 +37,19 @@ export function LoginForm(): ReactElement {
     event.preventDefault();
     setIsSubmitting(true);
     setErrors(validate(values));
-    fetchData({ 
-      method: 'POST',
-      body: JSON.stringify(values)
-    }); 
-  }
+    const errors = validate(values);
+      if (!errors.emailAddress && !errors.password) {
+        fetchData({ 
+          method: 'POST',
+          body: JSON.stringify(values)
+        });
+      }
+    }
 
   if (data?.success) {
     return (
-      <p>
-        Successfully logged in
-      </p>
-    )
+      <p className="login-test">Successfully logged in</p>
+    );
   }
 
   return (
