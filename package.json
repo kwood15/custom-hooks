@@ -10,7 +10,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -38,6 +39,7 @@
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/react": "^6.1.21",
     "@types/react-router-dom": "^5.1.7",
+    "husky": "^5.2.0",
     "prettier": "2.2.1",
     "ts-node": "^9.1.1"
   },
