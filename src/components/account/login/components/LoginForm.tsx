@@ -17,7 +17,7 @@ export function LoginForm(): ReactElement {
   const [values, handleChange] = useForm<LoginFormState>({
     emailAddress: '',
     password: '',
-    staySignedIn: false,
+    staySignedIn: false
   });
 
   const [errors, setErrors] = useState<Partial<LoginFormState>>({
@@ -26,7 +26,7 @@ export function LoginForm(): ReactElement {
   });
 
   const [, setIsSubmitting] = useState<boolean>(false); // isSubmitting
-  
+
   const { fetchData, data } = useFetch<LoginFormState>('/login');
 
   const { emailAddress, password, staySignedIn } = values;
@@ -37,19 +37,17 @@ export function LoginForm(): ReactElement {
     event.preventDefault();
     setIsSubmitting(true);
     setErrors(validate(values));
-    const errors = validate(values);
-      if (!errors.emailAddress && !errors.password) {
-        fetchData({ 
-          method: 'POST',
-          body: JSON.stringify(values)
-        });
-      }
+    const { emailAddress, password } = validate(values);
+    if (!emailAddress && !password) {
+      fetchData({
+        method: 'POST',
+        body: JSON.stringify(values)
+      });
     }
+  }
 
   if (data?.success) {
-    return (
-      <p className="login-test">Successfully logged in</p>
-    );
+    return <p className="login-test">Successfully logged in</p>;
   }
 
   return (
@@ -92,10 +90,7 @@ export function LoginForm(): ReactElement {
           />
         </label>
       </div>
-      <button
-        type="submit"
-        onClick={handleSubmit}
-      >
+      <button type="submit" onClick={handleSubmit}>
         Login
       </button>
     </form>
