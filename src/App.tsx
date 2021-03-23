@@ -5,6 +5,7 @@ import { LoginForm } from './components/account/login';
 import Favourites from './components/account/favourites';
 import ListView from './components/ListView';
 import { SearchResults } from './components/search/components/SearchResults';
+import './assets/scss/main.scss';
 
 function App(): ReactElement {
   return (
