@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "prettier": "prettier --write ./src/assets/**/*.{js,jsx,ts,tsx,scss,css}",
+    "lint": "npm run prettier-styles && npm run stylelint",
+    "stylelint": "stylelint ./src/assets/**/*.{scss,css}",
+    "prettier-styles": "prettier --write ./src/assets/**/*.{scss,css}",
+    "prettier-scripts": "prettier --write src/**/*.{js,jsx,ts,tsx}",
     "pre-commit": "npx lint-staged",
     "server1": "ts-node ./src/server.ts",
     "server": "tsc ./src/server.ts && node ./src/server.js",
@@ -16,7 +19,8 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,scss,css}": "prettier --write"
+    "src/**/*.{js,jsx,ts,tsx,scss,css}": "prettier --write",
+    "src/assets/**/*.{scss,css}": "stylelint"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
