@@ -8,7 +8,9 @@
       {
         "ignoreAtRules": [
           "function",
+          "return",
           "if",
+          "else",
           "each",
           "for",
           "include",
