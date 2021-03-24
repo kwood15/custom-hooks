@@ -2,6 +2,23 @@
   "extends": "stylelint-config-standard",
   "rules": {
     "color-no-invalid-hex": true,
-    "indentation": 2
+    "indentation": 2,
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "function",
+          "if",
+          "each",
+          "for",
+          "include",
+          "mixin",
+          "font-face",
+          "warn",
+          "debug",
+          "extend"
+        ]
+      }
+    ]
   }
 }
