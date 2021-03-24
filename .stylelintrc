@@ -16,7 +16,11 @@
           "font-face",
           "warn",
           "debug",
-          "extend"
+          "error",
+          "extend",
+          "use",
+          "forward",
+          "at-root"
         ]
       }
     ]
