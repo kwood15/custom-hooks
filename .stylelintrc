@@ -22,7 +22,8 @@
           "extend",
           "use",
           "forward",
-          "at-root"
+          "at-root",
+          "content"
         ]
       }
     ]
