@@ -10,6 +10,7 @@
     "declaration-colon-newline-after": null,
     "function-comma-newline-after": null,
     "comment-empty-line-before": null,
+    "no-missing-end-of-source-newline": null,
     "color-hex-length": "long",
     "selector-pseudo-element-colon-notation": "single",
     "declaration-block-trailing-semicolon": "always",
