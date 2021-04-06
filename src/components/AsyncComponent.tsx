@@ -5,13 +5,20 @@ import {
   useEffect
 } from 'react';
 
+interface AsyncComponentState {
+  component: ReactElement;
+}
+
 export default function asyncComponent(
-  importComponent: () => any
+  importComponent: () => any,
+  isLoading: boolean = false
 ): ReactElement<any, string | JSXElementConstructor<any>> {
   function AsyncComponent(
     props: any
   ): ReactElement<any, string | JSXElementConstructor<any>> {
-    const [component, setComponent] = useState<ReactElement | null>(null);
+    const [component, setComponent] = useState<AsyncComponentState | null>(
+      null
+    );
 
     useEffect(() => {
       async function getComponent() {
