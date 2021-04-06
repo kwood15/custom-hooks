@@ -2,6 +2,7 @@ import { ReactElement } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import Amplify from 'aws-amplify';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import awsExports from './aws-exports';
 
 import Search from './components/search';
@@ -59,4 +60,4 @@ function App(): ReactElement {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
