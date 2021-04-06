@@ -1,11 +1,18 @@
 import { ReactElement } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
+import Amplify from 'aws-amplify';
+import awsExports from './aws-exports';
+
 import Search from './components/search';
 import { LoginForm } from './components/account/login';
 import Favourites from './components/account/favourites';
 import ListView from './components/ListView';
 import { SearchResults } from './components/search/components/SearchResults';
+
 import './assets/scss/main.scss';
+
+Amplify.configure(awsExports);
 
 function App(): ReactElement {
   return (
