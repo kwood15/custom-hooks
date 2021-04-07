@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   ReactElement,
   JSXElementConstructor,
@@ -6,16 +7,14 @@ import {
 } from 'react';
 
 interface AsyncComponentState {
-  component: ReactElement;
+  component: ReactElement | null;
 }
 
 export default function asyncComponent(
   importComponent: () => any,
   isLoading: boolean = false
-): ReactElement<any, string | JSXElementConstructor<any>> {
-  function AsyncComponent(
-    props: any
-  ): ReactElement<any, string | JSXElementConstructor<any>> {
+): ReactElement<any, string | JSXElementConstructor<any>> | boolean {
+  function AsyncComponent(props: any): AsyncComponentState {
     const [component, setComponent] = useState<AsyncComponentState | null>(
       null
     );
