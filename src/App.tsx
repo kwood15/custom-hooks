@@ -6,6 +6,7 @@ import { AmplifyAuthenticator, AmplifyGreetings } from '@aws-amplify/ui-react';
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
 import awsExports from './aws-exports';
 
+import { Homepage } from './components/Homepage';
 import Favourites from './components/account/favourites';
 import { SearchResults } from './components/search/components/SearchResults';
 
@@ -61,9 +62,7 @@ function App(): ReactElement {
       </nav>
 
       {authState === AuthState.SignedIn && user ? (
-        <>
-          <AmplifyGreetings username={user.username}></AmplifyGreetings>
-        </>
+        <AmplifyGreetings username={user.username}></AmplifyGreetings>
       ) : (
         <Route path="/login">
           <AmplifyAuthenticator />
@@ -72,7 +71,7 @@ function App(): ReactElement {
 
       <Switch>
         <Route path="/" exact>
-          homepage
+          <Homepage />
         </Route>
         <Route path="/search-results">
           <SearchResults />
