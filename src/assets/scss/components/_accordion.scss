@@ -1,0 +1,21 @@
+.accordion {
+  &-tab__title-link {
+    position: relative;
+    text-decoration: none;
+
+    &:after {
+      content: ' expanded icon';
+    }
+
+    &.open {
+      &:after {
+        content: ' collapsed icon';
+      }
+    }
+  }
+
+  &-item .collapsed {
+    max-height: 0;
+    overflow: hidden;
+  }
+}
