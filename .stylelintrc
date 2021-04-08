@@ -14,9 +14,6 @@
     "color-hex-length": "long",
     "selector-pseudo-element-colon-notation": "single",
     "declaration-block-trailing-semicolon": "always",
-    "font-family-no-missing-generic-family-name": [true, {
-      "ignoreFontFamilies": "fontAwesome"
-    }],
     "block-closing-brace-newline-after": [
       "always",
       {
