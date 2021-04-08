@@ -4,7 +4,7 @@ import { Tooltip } from './Tooltip';
 
 export default function Demo(): ReactElement {
   return (
-    <>
+    <div className="grid">
       <h1>Demo</h1>
       <h3>Accordion</h3>
       <Accordion
@@ -19,20 +19,20 @@ export default function Demo(): ReactElement {
       <hr />
 
       <h3>Tooltip</h3>
-      <Tooltip position="top" content="Tooltip Top content">
+      <Tooltip position="top" content="Tooltip Top Content">
         Tooltip Top Trigger
       </Tooltip>
-      <Tooltip position="right" content="Tooltip Right content">
+      <Tooltip position="right" content="Tooltip Right Content">
         Tooltip Right Trigger
       </Tooltip>
-      <Tooltip position="bottom" content="Tooltip Bottom content">
+      <Tooltip position="bottom" content="Tooltip Bottom Content">
         Tooltip Bottom Trigger
       </Tooltip>
-      <Tooltip position="left" content="Tooltip Left content">
+      <Tooltip position="left" content="Tooltip Left Content">
         Tooltip Left Trigger
       </Tooltip>
 
       <hr />
-    </>
+    </div>
   );
 }

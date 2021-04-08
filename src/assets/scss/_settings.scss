@@ -1,1 +1,30 @@
-/* Only comments */
+// Colors
+$c-white: #ffffff !default;
+$c-grey-light: #bbbbbb !default;
+$c-grey: #888888 !default;
+$c-grey-dark: #555555 !default;
+
+$c-primary: hotpink !default;
+$c-secondary: lawngreen !default;
+$c-teritary: tomato !default;
+
+$c-error: red !default;
+$c-warning: yellow !default;
+$c-info: blue;
+$c-success: green;
+
+// Tooltip
+$tooltip-font-size: 0.85rem !default;
+$tooltip-min-width: 200px !default;
+$tooltip-max-width: 300px !default;
+$tooltip-padding-top: 0.25rem !default;
+$tooltip-padding-bottom: 0.25rem !default;
+$tooltip-padding-right: 0.25rem !default;
+$tooltip-padding-left: 0.25rem !default;
+$tooltip-color: $c-white !default;
+$tooltip-border-color: $c-primary !default;
+$tooltip-bg: $c-primary !default;
+$tooltip-margin: -5px !default;
+$tooltip-arrow-color: $c-primary !default;
+$tooltip-arrow-width: 5px !default;
+$zindex-tooltip: 10 !default;

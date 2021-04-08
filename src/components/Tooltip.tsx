@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode, useState } from 'react';
 
-interface TooltipProps {
+export interface TooltipProps {
   position: 'top' | 'right' | 'bottom' | 'left';
   content: string;
   children: ReactNode;
