@@ -1,1 +1,25 @@
-/* Only comments */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @media (min-width: 36rem) {
+    width: 33.75rem;
+  }
+
+  @media (min-width: 48rem) {
+    width: 45rem;
+  }
+
+  @media (min-width: 62rem) {
+    width: 60rem;
+  }
+
+  @media (min-width: 75rem) {
+    width: 71.25rem;
+  }
+}
