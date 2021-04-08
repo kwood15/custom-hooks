@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
+import Demo from './Demo';
 
 export function Homepage(): ReactElement {
-  return <div></div>;
+  return <Demo />;
 }
