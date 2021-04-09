@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 import { Accordion } from './Accordion';
 import { Tooltip } from './Tooltip';
+import { TextField } from './TextField';
 
 export default function Demo(): ReactElement {
   return (
@@ -19,20 +20,31 @@ export default function Demo(): ReactElement {
       <hr />
 
       <h3>Tooltip</h3>
-      <Tooltip position="top" content="Tooltip Top Content">
-        Tooltip Top Trigger
-      </Tooltip>
-      <Tooltip position="right" content="Tooltip Right Content">
-        Tooltip Right Trigger
-      </Tooltip>
-      <Tooltip position="bottom" content="Tooltip Bottom Content">
-        Tooltip Bottom Trigger
-      </Tooltip>
-      <Tooltip position="left" content="Tooltip Left Content">
-        Tooltip Left Trigger
-      </Tooltip>
+      <div className="grid-demo--tooltip">
+        <Tooltip position="top" content="Tooltip Top Content">
+          Tooltip Top Trigger
+        </Tooltip>
+        <Tooltip position="right" content="Tooltip Right Content">
+          Tooltip Right Trigger
+        </Tooltip>
+        <Tooltip position="bottom" content="Tooltip Bottom Content">
+          Tooltip Bottom Trigger
+        </Tooltip>
+        <Tooltip position="left" content="Tooltip Left Content">
+          Tooltip Left Trigger
+        </Tooltip>
+      </div>
 
       <hr />
+
+      <h3>Form</h3>
+      <TextField
+        id="textfieldId"
+        className="textfield-class"
+        label="TextField Label"
+        helpText="TextField Help Text"
+        placeholder="E.g"
+      />
     </div>
   );
 }
