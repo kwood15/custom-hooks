@@ -1,31 +1,38 @@
-import { Meta } from '@storybook/react/types-6-0';
-import { Tooltip } from '../../src/components/Tooltip';
+import { Meta, Story } from '@storybook/react/types-6-0';
+import { Tooltip, TooltipProps } from '../../src/components/Tooltip';
 
 export default {
   title: 'Example/Tooltip',
   component: Tooltip
 } as Meta;
 
-export const PositionTop = () => (
-  <Tooltip position="top" content="Tooltip Top Content">
-    Tooltip Top Trigger
-  </Tooltip>
-);
+const Template: Story<TooltipProps> = (args) => <Tooltip {...args} />;
 
-export const PositionRight = () => (
-  <Tooltip position="right" content="Tooltip Right Content">
-    Tooltip Right Trigger
-  </Tooltip>
-);
+const props = {
+  content: 'Tooltip Content',
+  children: 'Tooltip Trigger'
+};
 
-export const PositionBottom = () => (
-  <Tooltip position="bottom" content="Tooltip Bottom Content">
-    Tooltip Bottom Trigger
-  </Tooltip>
-);
+export const PositionTop = Template.bind({});
+PositionTop.args = {
+  position: 'top',
+  ...props
+};
 
-export const PositionLeft = () => (
-  <Tooltip position="left" content="Tooltip Left Content">
-    Tooltip Left Trigger
-  </Tooltip>
-);
+export const PositionRight = Template.bind({});
+PositionRight.args = {
+  position: 'right',
+  ...props
+};
+
+export const PositionBottom = Template.bind({});
+PositionBottom.args = {
+  position: 'bottom',
+  ...props
+};
+
+export const PositionLeft = Template.bind({});
+PositionLeft.args = {
+  position: 'left',
+  ...props
+};
