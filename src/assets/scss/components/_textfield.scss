@@ -1,0 +1,9 @@
+.textfield {
+  &__input {
+    border: 1px solid $c-grey;
+    padding-top: $spacing-xs;
+    padding-right: $spacing-xs;
+    padding-bottom: $spacing-xs;
+    padding-left: $spacing-xs;
+  }
+}
