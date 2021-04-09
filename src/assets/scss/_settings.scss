@@ -13,6 +13,14 @@ $c-warning: yellow !default;
 $c-info: blue;
 $c-success: green;
 
+// Spacing
+$spacing-xs: 0.25rem !default;
+$spacing-sm: 0.5rem !default;
+$spacing-md: 1rem !default;
+$spacing-lg: 1.25rem !default;
+$spacing-xl: 1.5rem !default;
+$spacing-xxl: 2rem !default;
+
 // Tooltip
 $tooltip-font-size: 0.85rem !default;
 $tooltip-min-width: 200px !default;

@@ -19,6 +19,8 @@ export default function asyncComponent(
       null
     );
 
+    const C = component;
+
     useEffect(() => {
       async function getComponent() {
         const { default: component } = await importComponent();
@@ -27,12 +29,8 @@ export default function asyncComponent(
       getComponent();
     }, []);
 
-    const C = component;
-
-    // @ts-ignore
     return C ? <C {...props} /> : null;
   }
 
-  // @ts-ignore
   return AsyncComponent;
 }
