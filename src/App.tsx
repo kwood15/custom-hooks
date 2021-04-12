@@ -9,6 +9,7 @@ import awsExports from './aws-exports';
 import { Homepage } from './components/Homepage';
 import Favourites from './components/account/favourites';
 import { SearchResults } from './components/search/components/SearchResults';
+import Tasks from './components/account/tasks';
 
 // import asyncRouteList from './routes/asyncRouteList';
 
@@ -58,11 +59,21 @@ function App(): ReactElement {
               <Link to="/login">Login</Link>
             </li>
           )}
+          {user && (
+            <li className="nav-list__item">
+              <Link to="/tasks">Tasks</Link>
+            </li>
+          )}
         </ul>
       </nav>
 
       {authState === AuthState.SignedIn && user ? (
-        <AmplifyGreetings username={user.username}></AmplifyGreetings>
+        <>
+          <AmplifyGreetings username={user.username}></AmplifyGreetings>
+          <Route path="/tasks">
+            <Tasks />
+          </Route>
+        </>
       ) : (
         <Route path="/login">
           <AmplifyAuthenticator />
