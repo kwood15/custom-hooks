@@ -14,7 +14,7 @@
     }
   }
 
-  &-item .collapsed {
+  &-item.collapsed {
     max-height: 0;
     overflow: hidden;
   }
