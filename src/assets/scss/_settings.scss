@@ -1,8 +1,11 @@
 // Colors
 $c-white: #ffffff !default;
+$c-grey-lighter: #eeeeee !default;
 $c-grey-light: #bbbbbb !default;
 $c-grey: #888888 !default;
 $c-grey-dark: #555555 !default;
+$c-grey-darker: #333333 !default;
+$c-black: #000000 !default;
 
 $c-primary: hotpink !default;
 $c-secondary: lawngreen !default;
@@ -21,6 +24,9 @@ $spacing-lg: 1.25rem !default;
 $spacing-xl: 1.5rem !default;
 $spacing-xxl: 2rem !default;
 
+// Typography
+$font-size-base: 1rem !default;
+
 // Tooltip
 $tooltip-font-size: 0.85rem !default;
 $tooltip-min-width: 200px !default;
@@ -36,3 +42,7 @@ $tooltip-margin: -5px !default;
 $tooltip-arrow-color: $c-primary !default;
 $tooltip-arrow-width: 5px !default;
 $zindex-tooltip: 10 !default;
+
+// Checkbox
+$checkbox-bg: #dddddd !default;
+$checkbox-bg-checked: $c-primary !default;

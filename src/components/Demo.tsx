@@ -3,6 +3,7 @@ import { Accordion } from './Accordion';
 import { Tooltip } from './Tooltip';
 import { TextField } from './TextField';
 import { Dropdown } from './Dropdown';
+import { Checkbox } from './Checkbox';
 
 export default function Demo(): ReactElement {
   return (
@@ -42,6 +43,7 @@ export default function Demo(): ReactElement {
       <div className="grid-demo--textfield">
         <TextField
           id="textfieldId"
+          name="textfieldName"
           className="textfield-class"
           label="TextField Label"
           helpText="TextField Help Text"
@@ -58,6 +60,11 @@ export default function Demo(): ReactElement {
           <option value="Option 2">Option 2</option>
           <option value="Option 3">Option 3</option>
         </Dropdown>
+      </div>
+
+      <h3>Checkbox</h3>
+      <div className="grid-demo--checkbox">
+        <Checkbox id="checkboxID" label="Checkbox Label" name="checkboxName" />
       </div>
     </div>
   );

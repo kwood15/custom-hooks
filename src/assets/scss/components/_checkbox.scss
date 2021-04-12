@@ -1,0 +1,31 @@
+.checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding-left: $spacing-xl;
+  cursor: pointer;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+
+    &:checked ~ .checkbox__indicator {
+      color: $c-white;
+      background-color: $checkbox-bg-checked;
+      // background-image: todo
+    }
+  }
+
+  &__indicator {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: $font-size-base;
+    height: $font-size-base;
+    background-color: $checkbox-bg;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 50% 50%;
+  }
+}
