@@ -36,25 +36,25 @@ function App(): ReactElement {
 
   return (
     <Router>
-      <nav>
-        <ul>
-          <li>
+      <nav className="nav">
+        <ul className="nav-list">
+          <li className="nav-list__item">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="nav-list__item">
             <Link to="/search-results">Results</Link>
           </li>
-          <li>
+          <li className="nav-list__item">
             <Link to="/basket">Basket</Link>
           </li>
-          <li>
+          <li className="nav-list__item">
             <Link to="/checkout">Checkout</Link>
           </li>
-          <li>
+          <li className="nav-list__item">
             <Link to="/favourites">Favourites</Link>
           </li>
           {!user && (
-            <li>
+            <li className="nav-list__item">
               <Link to="/login">Login</Link>
             </li>
           )}

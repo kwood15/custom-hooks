@@ -23,6 +23,11 @@
   }
 }
 
+.nav-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
 .grid-demo {
   &--tooltip {
     display: grid;

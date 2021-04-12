@@ -2,10 +2,11 @@ import { ReactElement } from 'react';
 import { Accordion } from './Accordion';
 import { Tooltip } from './Tooltip';
 import { TextField } from './TextField';
+import { Dropdown } from './Dropdown';
 
 export default function Demo(): ReactElement {
   return (
-    <div className="grid">
+    <div className="demo">
       <h1>Demo</h1>
       <h3>Accordion</h3>
       <Accordion
@@ -37,14 +38,27 @@ export default function Demo(): ReactElement {
 
       <hr />
 
-      <h3>Form</h3>
-      <TextField
-        id="textfieldId"
-        className="textfield-class"
-        label="TextField Label"
-        helpText="TextField Help Text"
-        placeholder="E.g"
-      />
+      <h3>TextField</h3>
+      <div className="grid-demo--textfield">
+        <TextField
+          id="textfieldId"
+          className="textfield-class"
+          label="TextField Label"
+          helpText="TextField Help Text"
+          placeholder="E.g"
+        />
+      </div>
+
+      <hr />
+
+      <h3>Dropdown</h3>
+      <div className="grid-demo--dropdown">
+        <Dropdown id="dropdownId">
+          <option value="Option 1">Option 1</option>
+          <option value="Option 2">Option 2</option>
+          <option value="Option 3">Option 3</option>
+        </Dropdown>
+      </div>
     </div>
   );
 }

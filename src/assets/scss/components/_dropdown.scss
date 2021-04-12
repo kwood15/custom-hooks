@@ -1,1 +1,8 @@
-// .dropdown {}
+.dropdown {
+  &__field {
+    padding-top: $spacing-sm;
+    padding-right: $spacing-sm;
+    padding-bottom: $spacing-sm;
+    padding-left: $spacing-sm;
+  }
+}

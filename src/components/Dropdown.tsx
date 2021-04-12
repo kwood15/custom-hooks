@@ -16,7 +16,7 @@ interface DropdownProps {
   children: ReactNode;
 }
 
-export default function Dropdown({
+export function Dropdown({
   id,
   label,
   name,
@@ -25,9 +25,9 @@ export default function Dropdown({
   onChange,
   onBlur,
   autofocus,
-  className,
-  labelClass,
-  fieldClass,
+  className = '',
+  labelClass = '',
+  fieldClass = '',
   value,
   children,
   ...props
