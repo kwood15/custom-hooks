@@ -1,6 +1,6 @@
 projects:
   customhooksapi:
-    schemaPath: src/graphql/schema.json
+    schemaPath: amplify/backend/api/customhooksapi/build/schema.graphql
     includes:
       - src/graphql/**/*.ts
     excludes:
@@ -10,3 +10,6 @@ projects:
         codeGenTarget: typescript
         generatedFileName: api.ts
         docsFilePath: src/graphql
+extensions:
+  amplify:
+    version: 3
