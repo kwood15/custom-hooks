@@ -9,7 +9,7 @@ import awsExports from './aws-exports';
 import { Homepage } from './components/Homepage';
 import Favourites from './components/account/favourites';
 import { SearchResults } from './components/search/components/SearchResults';
-import Tasks from './components/account/tasks';
+import ShoppingList from './components/account/shopping-list';
 
 // import asyncRouteList from './routes/asyncRouteList';
 
@@ -60,18 +60,25 @@ function App(): ReactElement {
             </li>
           )}
           {user && (
-            <li className="nav-list__item">
-              <Link to="/tasks">Tasks</Link>
-            </li>
+            <>
+              <li className="nav-list__item">
+                <Link to="/accounts">My Account</Link>
+              </li>
+              <li className="nav-list__item">
+                <Link to="/accounts/shopping-list">My Shopping List</Link>
+              </li>
+            </>
           )}
         </ul>
       </nav>
 
       {authState === AuthState.SignedIn && user ? (
         <>
-          <AmplifyGreetings username={user.username}></AmplifyGreetings>
-          <Route path="/tasks">
-            <Tasks />
+          <Route path="/accounts">
+            <AmplifyGreetings username={user.username}></AmplifyGreetings>
+          </Route>
+          <Route path="/accounts/shopping-list">
+            <ShoppingList />
           </Route>
         </>
       ) : (
