@@ -50,12 +50,14 @@ function ShoppingList(): ReactElement {
     <>
       <h3>Add Item</h3>
       <TextField
+        label="Name"
         id="name"
         name="name"
         onChange={handleChange}
         value={values.name}
       />
       <TextField
+        label="Description"
         id="description"
         name="description"
         onChange={handleChange}
@@ -63,12 +65,13 @@ function ShoppingList(): ReactElement {
       />
       <button onClick={addItems}>Add item</button>
       <h3>Shopping List</h3>
-      {items.map((item: ShoppingListState) => (
-        <div key={item.id}>
-          <p>{item.name}</p>
-          <p>{item.description}</p>
-        </div>
-      ))}
+      {items.length > 0 &&
+        items.map((item: ShoppingListState) => (
+          <div key={item.id}>
+            <p>{item.name}</p>
+            <p>{item.description}</p>
+          </div>
+        ))}
     </>
   );
 }
