@@ -6,15 +6,14 @@ import { useForm } from '../../../custom-hooks/useForm';
 import { TextField } from '../../TextField';
 
 interface ShoppingListState {
-  id: string | null;
   name: string;
   description: string;
 }
 
-const initialState = { id: '', name: '', description: '' };
+const initialState = { name: '', description: '' };
 
 function ShoppingList(): ReactElement {
-  const [values, handleChange] = useForm<any>(initialState);
+  const [values, handleChange] = useForm<ShoppingListState | any>(initialState);
   const [items, setItems] = useState<ShoppingListState[]>([]);
 
   useEffect(() => {
@@ -23,9 +22,8 @@ function ShoppingList(): ReactElement {
 
   async function fetchData() {
     try {
-      const itemsData = await API.graphql(graphqlOperation(listTodos));
-      // @ts-ignore
-      const items = itemsData.data.listTodos.items;
+      const itemsData: any = await API.graphql(graphqlOperation(listTodos)); // as GraphQLResult<ListTodosQuery>
+      const items = itemsData.data?.listTodos.items;
       setItems(items);
     } catch (error) {
       console.log('There has been a problem retrieving your shopping list');
@@ -67,7 +65,7 @@ function ShoppingList(): ReactElement {
       <h3>Shopping List</h3>
       {items.length > 0 &&
         items.map((item: ShoppingListState) => (
-          <div key={item.id}>
+          <div key={item.name}>
             <p>{item.name}</p>
             <p>{item.description}</p>
           </div>
