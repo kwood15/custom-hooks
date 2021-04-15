@@ -1,25 +1,22 @@
 import { ReactElement, useState, useEffect } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
+
+import { CreateTodoInput } from '../../../../api';
 import { listTodos } from '../../../graphql/queries';
 import { createTodo } from '../../../graphql/mutations';
+
 import { useForm } from '../../../custom-hooks/useForm';
 import { TextField } from '../../TextField';
 
-interface ShoppingListState {
-  id: string;
-  name: string;
-  description: string;
-}
-
-const initialState: ShoppingListState = {
-  id: '',
+const initialState: CreateTodoInput = {
+  id: null,
   name: '',
   description: ''
 };
 
 function ShoppingList(): ReactElement {
-  const [values, handleChange] = useForm<ShoppingListState>(initialState);
-  const [items, setItems] = useState<ShoppingListState[]>([]);
+  const [values, handleChange] = useForm<CreateTodoInput>(initialState);
+  const [items, setItems] = useState<CreateTodoInput[]>([]);
 
   useEffect(() => {
     fetchData();
@@ -64,12 +61,12 @@ function ShoppingList(): ReactElement {
         id="description"
         name="description"
         onChange={handleChange}
-        value={values.description}
+        value={values.description || ''}
       />
       <button onClick={addItems}>Add item</button>
       <h3>Shopping List</h3>
       {items.length > 0 &&
-        items.map((item: ShoppingListState) => (
+        items.map((item: CreateTodoInput) => (
           <div key={item.id}>
             <p>{item.name}</p>
             <p>{item.description}</p>
