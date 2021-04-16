@@ -1,22 +1,34 @@
-import { ReactElement } from 'react';
+import { ReactElement, MouseEvent } from 'react';
 
 interface ButtonProps {
-  label: string;
-  type: 'primary' | 'secondary';
+  type?: 'button' | 'reset' | 'submit';
+  text: string;
+  color?: 'primary' | 'secondary' | 'tertiary';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  disabled?: boolean;
+  fullWidth?: boolean;
 }
 
-export default function Button({
-  label,
-  type = 'primary',
-  ...props
+export function Button({
+  type = 'button',
+  text,
+  color = 'primary',
+  size = 'sm',
+  onClick,
+  disabled,
+  fullWidth
 }: ButtonProps): ReactElement {
   return (
     <button
-      type="button"
-      className={type === 'primary' ? 'btn-primary' : 'btn-secondary'}
-      {...props}
+      type={type}
+      className={`btn btn--${color} btn--${size} ${
+        fullWidth ? 'btn--full-width' : ''
+      } ${disabled ? 'btn--disabled' : ''}`}
+      onClick={onClick}
+      disabled={disabled}
     >
-      {label}
+      {text}
     </button>
   );
 }

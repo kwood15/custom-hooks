@@ -1,1 +1,44 @@
-// .button {}
+.btn {
+  border: none;
+
+  &--primary {
+    color: $c-white;
+    background-color: $c-primary;
+  }
+
+  &--secondary {
+    color: $c-white;
+    background-color: $c-secondary;
+  }
+
+  &--tertiary {
+    color: $c-white;
+    background-color: $c-tertiary;
+  }
+
+  &--disabled {
+    color: $c-grey-dark;
+    background-color: $c-grey-lighter;
+    cursor: not-allowed;
+  }
+
+  &--sm {
+    padding: $spacing-sm;
+  }
+
+  &--md {
+    padding: $spacing-md;
+  }
+
+  &--lg {
+    padding: $spacing-lg;
+  }
+
+  &--xl {
+    padding: $spacing-xl;
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+}

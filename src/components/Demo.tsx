@@ -4,6 +4,7 @@ import { Tooltip } from './Tooltip';
 import { TextField } from './TextField';
 import { Dropdown } from './Dropdown';
 import { Checkbox } from './Checkbox';
+import { Button } from './Button';
 
 export default function Demo(): ReactElement {
   return (
@@ -22,7 +23,7 @@ export default function Demo(): ReactElement {
       <hr />
 
       <h3>Tooltip</h3>
-      <div className="grid-demo--tooltip">
+      <div className="grid-demo grid-demo--tooltip">
         <Tooltip position="top" content="Tooltip Top Content">
           Tooltip Top Trigger
         </Tooltip>
@@ -40,7 +41,7 @@ export default function Demo(): ReactElement {
       <hr />
 
       <h3>TextField</h3>
-      <div className="grid-demo--textfield">
+      <div className="grid-demo grid-demo--textfield">
         <TextField
           id="textfieldId"
           name="textfieldName"
@@ -54,7 +55,7 @@ export default function Demo(): ReactElement {
       <hr />
 
       <h3>Dropdown</h3>
-      <div className="grid-demo--dropdown">
+      <div className="grid-demo grid-demo--dropdown">
         <Dropdown id="dropdownId">
           <option value="Option 1">Option 1</option>
           <option value="Option 2">Option 2</option>
@@ -62,10 +63,47 @@ export default function Demo(): ReactElement {
         </Dropdown>
       </div>
 
+      <hr />
+
       <h3>Checkbox</h3>
-      <div className="grid-demo--checkbox">
+      <div className="grid-demo grid-demo--checkbox">
         <Checkbox id="checkboxID" label="Checkbox Label" name="checkboxName" />
       </div>
+
+      <hr />
+
+      <h3>Button</h3>
+      <div className="grid-demo grid-demo--button">
+        <Button
+          text="Primary"
+          onClick={() => alert('clicked')}
+          color="primary"
+        />
+        <Button
+          text="Secondary"
+          onClick={() => alert('clicked')}
+          color="secondary"
+        />
+        <Button
+          text="Tertiary"
+          onClick={() => alert('clicked')}
+          color="tertiary"
+        />
+        <Button
+          text="Disabled"
+          onClick={() => alert('clicked')}
+          disabled={true}
+        />
+        <Button text="Small" onClick={() => alert('clicked')} size="sm" />
+        <Button text="Medium" onClick={() => alert('clicked')} size="md" />
+        <Button text="Large" onClick={() => alert('clicked')} size="lg" />
+        <Button text="Extra Large" onClick={() => alert('clicked')} size="xl" />
+      </div>
+      <Button
+        text="Full Width"
+        onClick={() => alert('clicked')}
+        fullWidth={true}
+      />
     </div>
   );
 }
