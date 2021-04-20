@@ -16,6 +16,7 @@ export function SearchItem({
 
   return (
     <div key={item.idDrink}>
+      <img src={item.strDrinkThumb} alt={item.strDrink} />
       <p>{item.strDrink}</p>
       <p>{item.strInstructions}</p>
       <button

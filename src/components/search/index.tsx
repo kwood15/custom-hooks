@@ -1,10 +1,11 @@
-import { ReactElement } from 'react'
+import { ReactElement } from 'react';
 import { SearchForm } from './components/SearchForm';
 
 export interface Item {
   idDrink: number;
   strDrink: string;
   strInstructions: string;
+  strDrinkThumb: string;
 }
 
 export interface ItemList {
@@ -12,7 +13,5 @@ export interface ItemList {
 }
 
 export default function Search(): ReactElement {
-  return (
-    <SearchForm />
-  )
+  return <SearchForm />;
 }

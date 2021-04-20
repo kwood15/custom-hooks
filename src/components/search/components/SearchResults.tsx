@@ -32,12 +32,12 @@ export function SearchResults(): ReactElement {
 
   function handleRemove(drink: Item) {
     setValues([
-      ...values.filter((item: Item) => item.idDrink !== drink.idDrink),
+      ...values.filter((item: Item) => item.idDrink !== drink.idDrink)
     ]);
   }
 
   return (
-    <>
+    <div className="grid">
       {isLoading ? (
         <p>Loading results...</p>
       ) : (
@@ -50,6 +50,6 @@ export function SearchResults(): ReactElement {
         </>
       )}
       {isError && <p>An error occured, please try again</p>}
-    </>
+    </div>
   );
 }
