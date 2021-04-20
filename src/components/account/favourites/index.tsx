@@ -9,6 +9,7 @@ export interface Item {
   idDrink: number;
   strDrink: string;
   strInstructions: string;
+  strDrinkThumb: string;
 }
 
 interface ItemList {
@@ -43,7 +44,7 @@ export default function Favourites(): ReactElement {
 
   function handleRemove(drink: Item) {
     setValues([
-      ...values.filter((item: Item) => item.idDrink !== drink.idDrink),
+      ...values.filter((item: Item) => item.idDrink !== drink.idDrink)
     ]);
   }
 
