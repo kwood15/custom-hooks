@@ -1,9 +1,15 @@
 ## **Custom Hooks**
 
-Start client:
+Run app:
 
 ```bash
 npm start
+```
+
+Setup GraphQL:
+
+```bash
+amplify mock api
 ```
 
 Run unit tests:
