@@ -1,107 +1,14 @@
-import { ReactElement, useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { ReactElement } from 'react';
 
-import Amplify from 'aws-amplify';
-import { AmplifyAuthenticator, AmplifyGreetings } from '@aws-amplify/ui-react';
-import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
-import awsExports from './aws-exports';
-
-import { Homepage } from './components/Homepage';
-import Favourites from './components/account/favourites';
-import { SearchResults } from './components/search/components/SearchResults';
-import ShoppingList from './components/account/shopping-list';
-
-// import asyncRouteList from './routes/asyncRouteList';
-
+import Router from './components/Router';
 import './assets/scss/main.scss';
 
+import Amplify from 'aws-amplify';
+import awsExports from './aws-exports';
 Amplify.configure(awsExports);
 
 function App(): ReactElement {
-  const [authState, setAuthState] = useState<AuthState>();
-  const [user, setUser] = useState<any>();
-
-  useEffect(() => {
-    return onAuthUIStateChange((nextAuthState, authData) => {
-      if (nextAuthState === AuthState.SignedIn) {
-        console.log('signed in!');
-        console.log('user data: ', authData);
-      }
-      if (!authData) {
-        console.log('not signed in');
-      }
-      setAuthState(nextAuthState);
-      setUser(authData);
-    });
-  }, []);
-
-  return (
-    <Router>
-      <nav className="nav">
-        <ul className="nav-list">
-          <li className="nav-list__item">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="nav-list__item">
-            <Link to="/search-results">Results</Link>
-          </li>
-          <li className="nav-list__item">
-            <Link to="/basket">Basket</Link>
-          </li>
-          <li className="nav-list__item">
-            <Link to="/checkout">Checkout</Link>
-          </li>
-          <li className="nav-list__item">
-            <Link to="/favourites">Favourites</Link>
-          </li>
-          {!user && (
-            <li className="nav-list__item">
-              <Link to="/login">Login</Link>
-            </li>
-          )}
-          {user && (
-            <>
-              <li className="nav-list__item">
-                <Link to="/accounts">My Account</Link>
-              </li>
-              <li className="nav-list__item">
-                <Link to="/accounts/shopping-list">My Shopping List</Link>
-              </li>
-            </>
-          )}
-        </ul>
-      </nav>
-
-      {authState === AuthState.SignedIn && user ? (
-        <>
-          <Route path="/accounts">
-            <AmplifyGreetings username={user.username}></AmplifyGreetings>
-          </Route>
-          <Route path="/accounts/shopping-list">
-            <ShoppingList />
-          </Route>
-        </>
-      ) : (
-        <Route path="/login">
-          <AmplifyAuthenticator />
-        </Route>
-      )}
-
-      <Switch>
-        <Route path="/" exact>
-          <Homepage />
-        </Route>
-        <Route path="/search-results">
-          <SearchResults />
-        </Route>
-        <Route path="/basket">basket</Route>
-        <Route path="/checkout">checkout</Route>
-        <Route path="/favourites">
-          <Favourites />
-        </Route>
-      </Switch>
-    </Router>
-  );
+  return <Router />;
 }
 
 export default App;
